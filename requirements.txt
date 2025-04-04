@@ -1,0 +1,16 @@
+pymongo
+gunicorn
+pandas
+plotly
+scikit-learn
+numpy
+openai
+fastapi
+uvicorn
+python-dotenv
+pyjwt
+requests
+pydantic
+pillow
+matplotlib
+geopy
