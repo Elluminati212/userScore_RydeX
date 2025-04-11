@@ -5,23 +5,23 @@ export interface Trip {
   /**
    * The unique identifier for the trip.
    */
-  id: string;
-  /**
-   * The time of day when the trip occurred.
-   */
-  timeOfDay: string;
-  /**
-   * The day of the week when the trip occurred.
-   */
-  dayOfWeek: string;
-  /**
-   * The location where the trip started.
-   */
-  location: string;
-  /**
-   * The demand for trips at the time.
-   */
-  demand: number;
+  _id: { $oid: string };
+  unique_id: number;
+  invoice_number: string;
+  source_address: string;
+  destination_address: string;
+  sourceLocation: number[];
+  destinationLocation: number[];
+  payment_mode: number;
+  total_distance: number;
+  total_time: number;
+  payment_status: number;
+  is_trip_end: number;
+  is_trip_completed: number;
+  payment_mode: number;
+  payment_status: number;
+  accepted_time: { $date: string };
+  created_at: { $date: string };
 }
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
@@ -50,8 +50,8 @@ export async function getTrips(): Promise<Trip[]> {
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
-    const db = client.db('cabe'); // Replace with your actual database name
-    const tripsCollection = db.collection<Trip>('trips'); // Replace with your actual collection name
+    const db = client.db('CabE'); // Replace with your actual database name
+    const tripsCollection = db.collection<Trip>('trip_histories'); // Replace with your actual collection name
     const trips = await tripsCollection.find().toArray();
 
     return trips;

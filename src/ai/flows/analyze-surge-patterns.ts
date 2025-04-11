@@ -55,6 +55,8 @@ Analyze the following historical trip data to identify factors that contribute t
 Trip Data:
 {{{tripData}}}
 
+Consider the trip start time, trip end time, source and destination locations, total distance, total time, and payment status to analyze surge patterns.
+
 Based on your analysis, provide a detailed description of the surge patterns and suggest an optimal pricing strategy.
 
 Format the surgePatterns and optimalPricingStrategy to be human-readable.
@@ -81,4 +83,3 @@ const analyzeSurgePatternsFlow = ai.defineFlow<
     return output!;
   }
 );
-
